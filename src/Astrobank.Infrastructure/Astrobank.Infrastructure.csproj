@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Astrobank.Infrastructure
+    Implementations of Application-layer abstractions that talk to the outside
+    world but are not persistence: file/blob storage, email/notification senders,
+    Serilog sink configuration, third-party API clients, caching, etc.
+  -->
+
+  <ItemGroup>
+    <ProjectReference Include="..\Astrobank.Application\Astrobank.Application.csproj" />
+    <ProjectReference Include="..\Astrobank.Domain\Astrobank.Domain.csproj" />
+    <ProjectReference Include="..\Astrobank.Shared\Astrobank.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Added as concrete integrations land: Serilog, Serilog.AspNetCore, etc. -->
+  </ItemGroup>
+
+</Project>

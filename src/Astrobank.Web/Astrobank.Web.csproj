@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <!--
+    Astrobank.Web
+    ASP.NET Core MVC entry point and composition root. Wires up DI for every
+    layer, hosts Controllers (thin - orchestration only, no business logic),
+    Views, and static assets. This is the only project allowed to reference
+    Persistence and Infrastructure directly, since it is where concrete
+    implementations are registered against their Application-layer abstractions.
+  -->
+
+  <PropertyGroup>
+    <UserSecretsId>astrobank-web-2f8b6b1e-2f0a-4b9a-9b0e-astrobank</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Astrobank.Application\Astrobank.Application.csproj" />
+    <ProjectReference Include="..\Astrobank.Domain\Astrobank.Domain.csproj" />
+    <ProjectReference Include="..\Astrobank.Infrastructure\Astrobank.Infrastructure.csproj" />
+    <ProjectReference Include="..\Astrobank.Persistence\Astrobank.Persistence.csproj" />
+    <ProjectReference Include="..\Astrobank.Shared\Astrobank.Shared.csproj" />
+    <ProjectReference Include="..\Astrobank.AstrologyEngine\Astrobank.AstrologyEngine.csproj" />
+    <ProjectReference Include="..\Astrobank.Research\Astrobank.Research.csproj" />
+    <ProjectReference Include="..\Astrobank.AI\Astrobank.AI.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Astrobank.Domain
+    Core of the Clean Architecture onion: entities, value objects, domain enums,
+    domain events and domain-level invariants (e.g. "Charts belong to exactly one
+    owner", "Facts are immutable"). This project has no dependency on EF Core,
+    ASP.NET Core, or any external framework - only on Astrobank.Shared.
+  -->
+
+  <ItemGroup>
+    <ProjectReference Include="..\Astrobank.Shared\Astrobank.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

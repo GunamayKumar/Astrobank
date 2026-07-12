@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Astrobank.Persistence
+    EF Core DbContext, entity type configurations (IEntityTypeConfiguration<T>),
+    migrations, and repository/unit-of-work implementations for SQL Server.
+    Implements abstractions declared in Astrobank.Application. Nothing outside
+    this project (and the composition root in Astrobank.Web) should reference
+    EF Core types directly.
+  -->
+
+  <ItemGroup>
+    <ProjectReference Include="..\Astrobank.Application\Astrobank.Application.csproj" />
+    <ProjectReference Include="..\Astrobank.Domain\Astrobank.Domain.csproj" />
+    <ProjectReference Include="..\Astrobank.Shared\Astrobank.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Added with the first DbContext commit: Microsoft.EntityFrameworkCore.SqlServer, .Design, .Tools. -->
+  </ItemGroup>
+
+</Project>

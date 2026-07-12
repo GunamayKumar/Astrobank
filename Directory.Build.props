@@ -1,0 +1,22 @@
+<Project>
+
+  <!--
+    Centralized build settings for all Astrobank projects.
+    Individual .csproj files should not repeat these values.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+    <NoWarn>CS1591</NoWarn>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <RootNamespace>$(MSBuildProjectName)</RootNamespace>
+    <AssemblyName>$(MSBuildProjectName)</AssemblyName>
+    <Company>Astrobank</Company>
+    <Product>Astrobank</Product>
+  </PropertyGroup>
+
+</Project>

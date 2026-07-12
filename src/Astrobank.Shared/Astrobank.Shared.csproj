@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Astrobank.Shared
+    Cross-cutting concerns shared across every layer: common constants, result/error
+    wrapper types, extension methods, and other primitives that have no business
+    meaning on their own. This project must never take a dependency on any other
+    Astrobank project.
+  -->
+
+  <ItemGroup>
+    <!-- Intentionally empty. No packages yet - added as concrete needs arise. -->
+  </ItemGroup>
+
+</Project>

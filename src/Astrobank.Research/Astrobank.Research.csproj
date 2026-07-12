@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Astrobank.Research
+    Research-specific application/domain logic: dataset construction, consensus
+    calculation, prediction outcome validation, and machine learning dataset
+    export. Kept as its own project because research logic is read-only against
+    chart data and evolves independently of the core chart/community features.
+  -->
+
+  <ItemGroup>
+    <ProjectReference Include="..\Astrobank.Application\Astrobank.Application.csproj" />
+    <ProjectReference Include="..\Astrobank.Domain\Astrobank.Domain.csproj" />
+    <ProjectReference Include="..\Astrobank.Shared\Astrobank.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

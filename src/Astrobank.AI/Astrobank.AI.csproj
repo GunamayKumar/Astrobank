@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Astrobank.AI
+    AI-generated observations, AI recommendations, and AI model benchmarking
+    against human consensus. AI observations are always additive and must never
+    overwrite human observations - that invariant is enforced at the Application
+    layer, not here.
+  -->
+
+  <ItemGroup>
+    <ProjectReference Include="..\Astrobank.Application\Astrobank.Application.csproj" />
+    <ProjectReference Include="..\Astrobank.Domain\Astrobank.Domain.csproj" />
+    <ProjectReference Include="..\Astrobank.Shared\Astrobank.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

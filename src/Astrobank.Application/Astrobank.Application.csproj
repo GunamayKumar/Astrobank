@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Astrobank.Application
+    Use cases / application services, DTOs, FluentValidation validators, AutoMapper
+    profiles, and the abstractions (interfaces) that outer layers implement -
+    including IAstrologyEngine and repository/unit-of-work contracts. Controllers
+    in Astrobank.Web depend on this layer; this layer depends only on Domain and
+    Shared, never on Persistence, Infrastructure, or any concrete implementation.
+  -->
+
+  <ItemGroup>
+    <ProjectReference Include="..\Astrobank.Domain\Astrobank.Domain.csproj" />
+    <ProjectReference Include="..\Astrobank.Shared\Astrobank.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Added when the first use case lands: FluentValidation, AutoMapper, MediatR (if adopted), etc. -->
+  </ItemGroup>
+
+</Project>

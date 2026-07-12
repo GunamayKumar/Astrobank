@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Astrobank.AstrologyEngine
+    Home of the pluggable astrology calculation engines (Parashara, KP, Jaimini,
+    Nadi, Lal Kitab, ...), all implementing the IAstrologyEngine abstraction owned
+    by Astrobank.Application. Astrobank.Application and Astrobank.Web depend on
+    the abstraction only; concrete engine selection happens in the Web composition
+    root via DI.
+  -->
+
+  <ItemGroup>
+    <ProjectReference Include="..\Astrobank.Application\Astrobank.Application.csproj" />
+    <ProjectReference Include="..\Astrobank.Domain\Astrobank.Domain.csproj" />
+    <ProjectReference Include="..\Astrobank.Shared\Astrobank.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

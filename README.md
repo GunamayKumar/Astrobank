@@ -157,16 +157,13 @@ Shared  ←  Domain  ←  Application  ←  Persistence
 | Software design | Complete (frozen) |
 | Database design | Complete (frozen) |
 | Business rules | Complete (frozen) |
-| Implementation | **Just started** |
+| Implementation | **In progress** (Users domain foundation complete) |
 
-### Commit 1 (this commit): Solution foundation
+### Current state
 
 What exists right now:
 - `Astrobank.sln` with all 9 projects, correctly cross-referenced as above.
-- Every class library project (`Domain`, `Shared`, `Application`,
-  `Persistence`, `Infrastructure`, `AstrologyEngine`, `Research`, `AI`) is an
-  **empty shell** — a valid `.csproj` with correct `ProjectReference`s and
-  **zero `.cs` files**. No entities, no interfaces, no code of any kind yet.
+- Initial domain entities for the Users module (User, UserProfile, Role, Permission, Country) implemented in `Astrobank.Domain`.
 - `Astrobank.Web` has the minimum needed for an ASP.NET Core MVC app to
   exist and build:
   - `Program.cs` — `AddControllersWithViews()` + default route only. No
@@ -201,10 +198,9 @@ and fix anything that doesn't compile before adding more code on top.
 
 ### What is explicitly NOT done yet
 
-Nothing beyond the solution shell exists. In particular, none of the
-following have been started:
+The following have not been started:
 
-- No entities in `Domain` (no `Chart`, `User`, `Observation`, etc.)
+- Entities in `Domain` other than the Users module (`Chart`, `Observation`, etc.)
 - No `IAstrologyEngine` interface or any engine implementation
 - No EF Core `DbContext`, entity configurations, or migrations
 - No ASP.NET Identity setup/customization

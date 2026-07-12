@@ -157,13 +157,14 @@ Shared  ←  Domain  ←  Application  ←  Persistence
 | Software design | Complete (frozen) |
 | Database design | Complete (frozen) |
 | Business rules | Complete (frozen) |
-| Implementation | **In progress** (Users domain foundation complete) |
+| Implementation | **In progress** (Users domain foundation + persistence complete) |
 
 ### Current state
 
 What exists right now:
 - `Astrobank.sln` with all 9 projects, correctly cross-referenced as above.
 - Initial domain entities for the Users module (User, UserProfile, Role, Permission, Country) implemented in `Astrobank.Domain`.
+- `AstrobankDbContext`, Fluent API entity configurations, and initial EF Core migration for the Users module created in `Astrobank.Persistence`. Registered in `Astrobank.Web`.
 - `Astrobank.Web` has the minimum needed for an ASP.NET Core MVC app to
   exist and build:
   - `Program.cs` — `AddControllersWithViews()` + default route only. No
@@ -201,8 +202,8 @@ and fix anything that doesn't compile before adding more code on top.
 The following have not been started:
 
 - Entities in `Domain` other than the Users module (`Chart`, `Observation`, etc.)
+- EF Core configurations for modules other than Users.
 - No `IAstrologyEngine` interface or any engine implementation
-- No EF Core `DbContext`, entity configurations, or migrations
 - No ASP.NET Identity setup/customization
 - No controllers, views, or view models
 - No Serilog configuration

@@ -9,7 +9,9 @@ using Astrobank.Infrastructure.Identity;
 using Astrobank.Persistence;
 using Astrobank.Persistence.Repositories;
 using Astrobank.Persistence.Seeding;
+using Astrobank.Web.Filters;
 using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -63,12 +65,17 @@ builder.Services.AddScoped<ICommandHandler<LoginUserCommand, AuthenticationResul
 // Register AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-// Register FluentValidation
+// Register FluentValidation explicitly with ASP.NET Core UI integration
 builder.Services.AddValidatorsFromAssemblyContaining<RegisterUserCommandValidator>();
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddFluentValidationClientsideAdapters();
 
 // NOTE: Service registration for Serilog, IAstrologyEngine implementations,
 // Research, and AI modules will each be added in their own dedicated commit.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(options =>
+{
+    options.Filters.Add<ValidationExceptionFilterAttribute>();
+});
 
 var app = builder.Build();
 

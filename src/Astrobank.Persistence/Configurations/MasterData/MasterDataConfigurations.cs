@@ -34,3 +34,16 @@ public class TagCategoryConfiguration : IEntityTypeConfiguration<TagCategory> {
         builder.Property(e => e.Name).IsRequired().HasMaxLength(200); builder.Property(e => e.Description).HasMaxLength(500);
     }
 }
+public class TagConfiguration : IEntityTypeConfiguration<Tag> {
+    public void Configure(EntityTypeBuilder<Tag> builder) {
+        builder.ToTable("Tags"); builder.HasKey(e => e.TagID); builder.Property(e => e.TagID).UseIdentityColumn();
+        builder.Property(e => e.Name).IsRequired().HasMaxLength(200); builder.Property(e => e.Description).HasMaxLength(500);
+        builder.HasOne(t => t.TagCategory).WithMany().HasForeignKey(t => t.TagCategoryID).OnDelete(DeleteBehavior.Restrict);
+    }
+}
+public class ChartImageTypeConfiguration : IEntityTypeConfiguration<ChartImageType> {
+    public void Configure(EntityTypeBuilder<ChartImageType> builder) {
+        builder.ToTable("ChartImageTypes"); builder.HasKey(e => e.ChartImageTypeID); builder.Property(e => e.ChartImageTypeID).UseIdentityColumn();
+        builder.Property(e => e.Name).IsRequired().HasMaxLength(200); builder.Property(e => e.Description).HasMaxLength(500);
+    }
+}

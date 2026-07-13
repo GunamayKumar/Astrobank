@@ -1,3 +1,7 @@
+using Astrobank.Application.Charts.DTOs;
+using Astrobank.Application.Charts.Queries.ListCharts;
+using Astrobank.Application.Charts.Commands.UpdateChart;
+using Astrobank.Application.Charts.Commands.CreateChart;
 using Astrobank.Persistence.Repositories.MasterData;
 using Astrobank.Application.MasterData.Countrys.DTOs;
 using Astrobank.Application.MasterData.Countrys.Queries.ListCountrys;
@@ -160,6 +164,13 @@ builder.Services.AddScoped<IQueryHandler<ListTagCategorysQuery, PaginatedList<Ta
 builder.Services.AddScoped<ICommandHandler<CreateTagCategoryCommand>, CreateTagCategoryCommandHandler>();
 builder.Services.AddScoped<ICommandHandler<UpdateTagCategoryCommand>, UpdateTagCategoryCommandHandler>();
 
+// Charts Module Repositories
+builder.Services.AddScoped<IChartRepository, ChartRepository>();
+
+// Charts Module CQRS
+builder.Services.AddScoped<IQueryHandler<ListChartsQuery, PaginatedList<ChartDto>>, ListChartsQueryHandler>();
+builder.Services.AddScoped<ICommandHandler<CreateChartCommand>, CreateChartCommandHandler>();
+builder.Services.AddScoped<ICommandHandler<UpdateChartCommand>, UpdateChartCommandHandler>();
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())

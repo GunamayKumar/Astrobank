@@ -100,8 +100,7 @@ public class AstrobankUserStore :
     {
         if (passwordHash != null)
         {
-            // Reflection because it's `init` or `private set` in Domain.
-            typeof(User).GetProperty(nameof(User.PasswordHash))!.SetValue(user, passwordHash);
+            user.SetPasswordHash(passwordHash);
         }
         return Task.CompletedTask;
     }
@@ -168,7 +167,7 @@ public class AstrobankUserStore :
         var role = await _roleRepository.GetByNameAsync(roleName, cancellationToken);
         if (role != null)
         {
-            typeof(User).GetProperty(nameof(User.RoleID))!.SetValue(user, role.RoleID);
+            user.AssignRole(role.RoleID);
         }
     }
 

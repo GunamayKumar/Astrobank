@@ -1,0 +1,53 @@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="row mb-4">
+    <div class="col-12">
+        <h2 class="display-6">Dashboard</h2>
+        <p class="text-muted">Welcome back, <strong>@User.Identity?.Name</strong>!</p>
+        <hr />
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-6 col-lg-3">
+        <div class="card h-100 shadow-sm border-primary">
+            <div class="card-body text-center">
+                <h5 class="card-title text-primary">Create Chart</h5>
+                <p class="card-text">Generate a new astrological chart.</p>
+                <a href="#" class="btn btn-outline-primary">Create</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+        <div class="card h-100 shadow-sm border-success">
+            <div class="card-body text-center">
+                <h5 class="card-title text-success">My Charts</h5>
+                <p class="card-text">View your saved charts and observations.</p>
+                <a href="#" class="btn btn-outline-success">View Charts</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+        <div class="card h-100 shadow-sm border-info">
+            <div class="card-body text-center">
+                <h5 class="card-title text-info">Research</h5>
+                <p class="card-text">Explore statistical consensus and datasets.</p>
+                <a href="#" class="btn btn-outline-info">Explore</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+        <div class="card h-100 shadow-sm border-warning">
+            <div class="card-body text-center">
+                <h5 class="card-title text-warning">Community</h5>
+                <p class="card-text">Connect with other astrologers.</p>
+                <a href="#" class="btn btn-outline-warning">Discuss</a>
+            </div>
+        </div>
+    </div>
+</div>

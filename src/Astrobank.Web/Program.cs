@@ -1,9 +1,15 @@
 using Astrobank.Application.Interfaces.Identity;
+using Astrobank.Application.Common.CQRS;
 using Astrobank.Application.Interfaces.Repositories;
+using Astrobank.Application.Users.Commands.LoginUser;
+using Astrobank.Application.Users.Commands.RegisterUser;
+using Astrobank.Application.Users.DTOs;
 using Astrobank.Domain.Users;
 using Astrobank.Infrastructure.Identity;
 using Astrobank.Persistence;
 using Astrobank.Persistence.Repositories;
+using Astrobank.Persistence.Seeding;
+using FluentValidation;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -50,15 +56,46 @@ builder.Services.AddAuthentication(IdentityConstants.ApplicationScheme)
         options.AccessDeniedPath = "/Auth/AccessDenied";
     });
 
-// NOTE: This is solution-foundation scaffolding only (Sprint 1, Commit 1).
-// Service registration for Serilog, FluentValidation,
-// AutoMapper, IAstrologyEngine implementations, Research, and AI modules will each be
-// added in their own dedicated commit, as those modules are assigned.
+// Register Application CQRS Handlers
+builder.Services.AddScoped<ICommandHandler<RegisterUserCommand, AuthenticationResultDto>, RegisterUserCommandHandler>();
+builder.Services.AddScoped<ICommandHandler<LoginUserCommand, AuthenticationResultDto>, LoginUserCommandHandler>();
+
+// Register AutoMapper
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+// Register FluentValidation
+builder.Services.AddValidatorsFromAssemblyContaining<RegisterUserCommandValidator>();
+
+// NOTE: Service registration for Serilog, IAstrologyEngine implementations,
+// Research, and AI modules will each be added in their own dedicated commit.
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-if (!app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
+{
+    // Apply migrations and seed data automatically in development
+    using (var scope = app.Services.CreateScope())
+    {
+        var services = scope.ServiceProvider;
+        try
+        {
+            var context = services.GetRequiredService<AstrobankDbContext>();
+            context.Database.Migrate();
+
+            var userManager = services.GetRequiredService<UserManager<User>>();
+            var configuration = services.GetRequiredService<IConfiguration>();
+
+            await AstrobankDbSeeder.SeedAsync(context, userManager, configuration);
+        }
+        catch (Exception ex)
+        {
+            var logger = services.GetRequiredService<ILogger<Program>>();
+            logger.LogError(ex, "An error occurred while migrating or seeding the database.");
+        }
+    }
+}
+else
 {
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();

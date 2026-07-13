@@ -22,16 +22,12 @@ public class AstrobankIdentityService : IIdentityService
         {
             Email = email,
             Username = username,
-            Name = name,
-            PasswordHash = "" // Will be set by UserManager via PasswordHasher
+            Name = name
         };
 
-        // Reflection used for properties with private setters (following strict DDD rules in this repository)
-        typeof(User).GetProperty(nameof(User.Status))!.SetValue(user, UserStatus.Active);
-        typeof(User).GetProperty(nameof(User.CreatedOn))!.SetValue(user, DateTime.UtcNow);
-
-        // Reflection to set RoleID as it's private set (or handled via a domain method in future)
-        typeof(User).GetProperty(nameof(User.RoleID))!.SetValue(user, roleId);
+        // Users are Pending by default per business rules. (This is already the default for the enum, but explicit is fine).
+        // Assign the role cleanly using the new domain method.
+        user.AssignRole(roleId);
 
         var result = await _userManager.CreateAsync(user, password);
 

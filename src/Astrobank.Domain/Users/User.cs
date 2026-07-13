@@ -41,7 +41,7 @@ public class User : BaseEntity, ISoftDelete
     /// <summary>
     /// Gets or sets the securely hashed password for the user.
     /// </summary>
-    public required string PasswordHash { get; init; }
+    public string PasswordHash { get; private set; } = string.Empty;
 
     /// <summary>
     /// Gets or sets the optional phone number of the user.
@@ -72,6 +72,48 @@ public class User : BaseEntity, ISoftDelete
     /// Gets or sets the IP address recorded for the user, if available.
     /// </summary>
     public string? IPAddress { get; private set; }
+
+    /// <summary>
+    /// Sets the password hash for the user.
+    /// </summary>
+    public void SetPasswordHash(string passwordHash)
+    {
+        PasswordHash = passwordHash;
+    }
+
+    /// <summary>
+    /// Activates the user account.
+    /// </summary>
+    public void Activate()
+    {
+        Status = UserStatus.Active;
+    }
+
+    /// <summary>
+    /// Marks the user as a verified astrologer.
+    /// </summary>
+    public void VerifyAstrologer()
+    {
+        IsVerifiedAstrologer = true;
+    }
+
+    /// <summary>
+    /// Sets the role ID for the user.
+    /// </summary>
+    public void AssignRole(int roleId)
+    {
+        RoleID = roleId;
+    }
+
+    /// <summary>
+    /// Sets the registration details (Phone, Gender, Country).
+    /// </summary>
+    public void SetRegistrationDetails(string? phoneNo, Gender gender, int countryId)
+    {
+        PhoneNo = phoneNo;
+        Gender = gender;
+        CountryID = countryId;
+    }
 
     /// <summary>
     /// Gets or sets a value indicating whether the user account has been logically deleted.

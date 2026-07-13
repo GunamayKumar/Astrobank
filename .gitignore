@@ -1,62 +1,18 @@
-## .NET build artifacts
-bin/
-obj/
-out/
-
-## Visual Studio
+[Bb]in/
+[Oo]bj/
+Migrations/
 .vs/
 *.user
 *.suo
-*.userosscache
+*.userosprefs
 *.sln.docstates
-
-## Rider / JetBrains
-.idea/
-*.sln.iml
-
-## VS Code
-.vscode/
-
-## Build results
-[Dd]ebug/
-[Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
-x64/
-x86/
-[Ww][Ii][Nn]32/
-[Aa][Rr][Mm]/
-[Aa][Rr][Mm]64/
-bld/
-[Bb]in/
-[Oo]bj/
-
-## User-specific files
-*.rsuser
-*.userprefs
-
-## NuGet
-*.nupkg
-*.snupkg
-**/[Pp]ackages/*
-!**/[Pp]ackages/build/
-*.nuget.props
-*.nuget.targets
-
-## ASP.NET Core
-appsettings.*.local.json
-secrets.json
-
-## Test results
-[Tt]est[Rr]esult*/
-*.trx
-*.coverage
-*.coveragexml
-
-## Misc OS files
-.DS_Store
-Thumbs.db
-
-## Logs
+*.db
+*.sqlite
+*.sqlite3
 *.log
-logs/
+*.tmp
+*.bak
+*.swp
+node_modules/
+dist/
+coverage/

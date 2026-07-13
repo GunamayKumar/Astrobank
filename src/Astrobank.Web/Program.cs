@@ -1,3 +1,53 @@
+using Astrobank.Persistence.Repositories.MasterData;
+using Astrobank.Application.MasterData.Countrys.DTOs;
+using Astrobank.Application.MasterData.Countrys.Queries.ListCountrys;
+using Astrobank.Application.MasterData.Countrys.Commands.UpdateCountry;
+using Astrobank.Application.MasterData.Countrys.Commands.CreateCountry;
+using Astrobank.Application.MasterData.TagCategorys.DTOs;
+using Astrobank.Application.MasterData.TagCategorys.Queries.ListTagCategorys;
+using Astrobank.Application.MasterData.TagCategorys.Commands.UpdateTagCategory;
+using Astrobank.Application.MasterData.TagCategorys.Commands.CreateTagCategory;
+using Astrobank.Application.MasterData.HelpCategorys.DTOs;
+using Astrobank.Application.MasterData.HelpCategorys.Queries.ListHelpCategorys;
+using Astrobank.Application.MasterData.HelpCategorys.Commands.UpdateHelpCategory;
+using Astrobank.Application.MasterData.HelpCategorys.Commands.CreateHelpCategory;
+using Astrobank.Application.MasterData.EventTypes.DTOs;
+using Astrobank.Application.MasterData.EventTypes.Queries.ListEventTypes;
+using Astrobank.Application.MasterData.EventTypes.Commands.UpdateEventType;
+using Astrobank.Application.MasterData.EventTypes.Commands.CreateEventType;
+using Astrobank.Application.MasterData.ChartPermissions.DTOs;
+using Astrobank.Application.MasterData.ChartPermissions.Queries.ListChartPermissions;
+using Astrobank.Application.MasterData.ChartPermissions.Commands.UpdateChartPermission;
+using Astrobank.Application.MasterData.ChartPermissions.Commands.CreateChartPermission;
+using Astrobank.Application.MasterData.ChartTypes.DTOs;
+using Astrobank.Application.MasterData.ChartTypes.Queries.ListChartTypes;
+using Astrobank.Application.MasterData.ChartTypes.Commands.UpdateChartType;
+using Astrobank.Application.MasterData.ChartTypes.Commands.CreateChartType;
+using Astrobank.Persistence.Repositories.MasterData;
+using Astrobank.Application.MasterData.Countrys.DTOs;
+using Astrobank.Application.MasterData.Countrys.Queries.ListCountrys;
+using Astrobank.Application.MasterData.Countrys.Commands.UpdateCountry;
+using Astrobank.Application.MasterData.Countrys.Commands.CreateCountry;
+using Astrobank.Application.MasterData.TagCategorys.DTOs;
+using Astrobank.Application.MasterData.TagCategorys.Queries.ListTagCategorys;
+using Astrobank.Application.MasterData.TagCategorys.Commands.UpdateTagCategory;
+using Astrobank.Application.MasterData.TagCategorys.Commands.CreateTagCategory;
+using Astrobank.Application.MasterData.HelpCategorys.DTOs;
+using Astrobank.Application.MasterData.HelpCategorys.Queries.ListHelpCategorys;
+using Astrobank.Application.MasterData.HelpCategorys.Commands.UpdateHelpCategory;
+using Astrobank.Application.MasterData.HelpCategorys.Commands.CreateHelpCategory;
+using Astrobank.Application.MasterData.EventTypes.DTOs;
+using Astrobank.Application.MasterData.EventTypes.Queries.ListEventTypes;
+using Astrobank.Application.MasterData.EventTypes.Commands.UpdateEventType;
+using Astrobank.Application.MasterData.EventTypes.Commands.CreateEventType;
+using Astrobank.Application.MasterData.ChartPermissions.DTOs;
+using Astrobank.Application.MasterData.ChartPermissions.Queries.ListChartPermissions;
+using Astrobank.Application.MasterData.ChartPermissions.Commands.UpdateChartPermission;
+using Astrobank.Application.MasterData.ChartPermissions.Commands.CreateChartPermission;
+using Astrobank.Application.MasterData.ChartTypes.DTOs;
+using Astrobank.Application.MasterData.ChartTypes.Queries.ListChartTypes;
+using Astrobank.Application.MasterData.ChartTypes.Commands.UpdateChartType;
+using Astrobank.Application.MasterData.ChartTypes.Commands.CreateChartType;
 using Astrobank.Application.Interfaces.Identity;
 using Astrobank.Application.Common.CQRS;
 using Astrobank.Application.Interfaces.Repositories;
@@ -76,6 +126,39 @@ builder.Services.AddControllersWithViews(options =>
 {
     options.Filters.Add<ValidationExceptionFilterAttribute>();
 });
+
+// Master Data Repositories
+builder.Services.AddScoped<ICountryRepository, CountryRepository>();
+builder.Services.AddScoped<IChartTypeRepository, ChartTypeRepository>();
+builder.Services.AddScoped<IChartPermissionRepository, ChartPermissionRepository>();
+builder.Services.AddScoped<IEventTypeRepository, EventTypeRepository>();
+builder.Services.AddScoped<IHelpCategoryRepository, HelpCategoryRepository>();
+builder.Services.AddScoped<ITagCategoryRepository, TagCategoryRepository>();
+
+// Master Data CQRS
+builder.Services.AddScoped<IQueryHandler<ListCountriesQuery, PaginatedList<CountryDto>>, ListCountriesQueryHandler>();
+builder.Services.AddScoped<ICommandHandler<CreateCountryCommand>, CreateCountryCommandHandler>();
+builder.Services.AddScoped<ICommandHandler<UpdateCountryCommand>, UpdateCountryCommandHandler>();
+
+builder.Services.AddScoped<IQueryHandler<ListChartTypesQuery, PaginatedList<ChartTypeDto>>, ListChartTypesQueryHandler>();
+builder.Services.AddScoped<ICommandHandler<CreateChartTypeCommand>, CreateChartTypeCommandHandler>();
+builder.Services.AddScoped<ICommandHandler<UpdateChartTypeCommand>, UpdateChartTypeCommandHandler>();
+
+builder.Services.AddScoped<IQueryHandler<ListChartPermissionsQuery, PaginatedList<ChartPermissionDto>>, ListChartPermissionsQueryHandler>();
+builder.Services.AddScoped<ICommandHandler<CreateChartPermissionCommand>, CreateChartPermissionCommandHandler>();
+builder.Services.AddScoped<ICommandHandler<UpdateChartPermissionCommand>, UpdateChartPermissionCommandHandler>();
+
+builder.Services.AddScoped<IQueryHandler<ListEventTypesQuery, PaginatedList<EventTypeDto>>, ListEventTypesQueryHandler>();
+builder.Services.AddScoped<ICommandHandler<CreateEventTypeCommand>, CreateEventTypeCommandHandler>();
+builder.Services.AddScoped<ICommandHandler<UpdateEventTypeCommand>, UpdateEventTypeCommandHandler>();
+
+builder.Services.AddScoped<IQueryHandler<ListHelpCategorysQuery, PaginatedList<HelpCategoryDto>>, ListHelpCategorysQueryHandler>();
+builder.Services.AddScoped<ICommandHandler<CreateHelpCategoryCommand>, CreateHelpCategoryCommandHandler>();
+builder.Services.AddScoped<ICommandHandler<UpdateHelpCategoryCommand>, UpdateHelpCategoryCommandHandler>();
+
+builder.Services.AddScoped<IQueryHandler<ListTagCategorysQuery, PaginatedList<TagCategoryDto>>, ListTagCategorysQueryHandler>();
+builder.Services.AddScoped<ICommandHandler<CreateTagCategoryCommand>, CreateTagCategoryCommandHandler>();
+builder.Services.AddScoped<ICommandHandler<UpdateTagCategoryCommand>, UpdateTagCategoryCommandHandler>();
 
 var app = builder.Build();
 

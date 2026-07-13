@@ -17,4 +17,12 @@
     <!-- Added as concrete integrations land: Serilog, Serilog.AspNetCore, etc. -->
   </ItemGroup>
 
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="8.0.0" />
+  </ItemGroup>
+
 </Project>

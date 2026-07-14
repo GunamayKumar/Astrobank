@@ -1,0 +1,36 @@
+@model Astrobank.Application.Charts.Commands.CreateChart.CreateChartCommand
+@using Astrobank.Domain.Users.Enums
+@{ ViewData["Title"] = "Create Chart"; }
+<div class="row"><div class="col-md-10 mx-auto"><div class="card shadow-sm"><div class="card-header bg-primary text-white"><h4 class="mb-0">Create New Chart</h4></div>
+<div class="card-body">
+    <form asp-action="Create" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+        <div class="row mb-3">
+            <div class="col-md-6"><label asp-for="Name" class="form-label"></label><input asp-for="Name" class="form-control" /><span asp-validation-for="Name" class="text-danger"></span></div>
+            <div class="col-md-6"><label asp-for="Alias" class="form-label"></label><input asp-for="Alias" class="form-control" placeholder="Optional" /><span asp-validation-for="Alias" class="text-danger"></span></div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-4"><label asp-for="BirthDate" class="form-label"></label><input asp-for="BirthDate" class="form-control" type="date" /><span asp-validation-for="BirthDate" class="text-danger"></span></div>
+            <div class="col-md-4"><label asp-for="BirthTime" class="form-label"></label><input asp-for="BirthTime" class="form-control" type="time" step="1" /><span asp-validation-for="BirthTime" class="text-danger"></span></div>
+            <div class="col-md-4"><label asp-for="Gender" class="form-label"></label><select asp-for="Gender" class="form-select" asp-items="Html.GetEnumSelectList<Gender>()"><option value="">Select Gender</option></select><span asp-validation-for="Gender" class="text-danger"></span></div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6"><label asp-for="BirthPlace" class="form-label"></label><input asp-for="BirthPlace" class="form-control" /><span asp-validation-for="BirthPlace" class="text-danger"></span></div>
+            <div class="col-md-6"><label asp-for="CountryID" class="form-label">Country</label><select asp-for="CountryID" class="form-select"><option value="">Select Country</option><option value="1">United States</option><option value="2">India</option></select><span asp-validation-for="CountryID" class="text-danger"></span></div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-4"><label asp-for="Latitude" class="form-label"></label><input asp-for="Latitude" class="form-control" type="number" step="0.000001" /><span asp-validation-for="Latitude" class="text-danger"></span></div>
+            <div class="col-md-4"><label asp-for="Longitude" class="form-label"></label><input asp-for="Longitude" class="form-control" type="number" step="0.000001" /><span asp-validation-for="Longitude" class="text-danger"></span></div>
+            <div class="col-md-4"><label asp-for="Timezone" class="form-label"></label><input asp-for="Timezone" class="form-control" placeholder="e.g. Asia/Kolkata" /><span asp-validation-for="Timezone" class="text-danger"></span></div>
+        </div>
+        <hr />
+        <div class="row mb-3">
+            <div class="col-md-6"><label asp-for="ChartTypeID" class="form-label">Chart Type</label><select asp-for="ChartTypeID" class="form-select"><option value="">Select</option><option value="1">Birth Chart</option><option value="2">Prashna Chart</option></select><span asp-validation-for="ChartTypeID" class="text-danger"></span></div>
+            <div class="col-md-6"><label asp-for="ChartPermissionID" class="form-label">Chart Permission</label><select asp-for="ChartPermissionID" class="form-select"><option value="">Select</option><option value="1">Private</option><option value="2">Restricted</option><option value="3">Public</option></select><span asp-validation-for="ChartPermissionID" class="text-danger"></span></div>
+        </div>
+        <div class="mb-3"><label asp-for="Description" class="form-label"></label><textarea asp-for="Description" class="form-control" rows="3"></textarea><span asp-validation-for="Description" class="text-danger"></span></div>
+        <div class="form-check mb-4"><input asp-for="AskingForHelp" class="form-check-input" /><label asp-for="AskingForHelp" class="form-check-label text-warning fw-bold">Request Community Help</label></div>
+        <div class="mt-4"><button type="submit" class="btn btn-primary btn-lg">Create Chart</button><a asp-action="Index" class="btn btn-outline-secondary btn-lg ms-2">Cancel</a></div>
+    </form>
+</div></div></div></div>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

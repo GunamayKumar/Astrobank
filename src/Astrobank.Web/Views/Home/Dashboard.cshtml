@@ -16,7 +16,7 @@
             <div class="card-body text-center">
                 <h5 class="card-title text-primary">Create Chart</h5>
                 <p class="card-text">Generate a new astrological chart.</p>
-                <a href="#" class="btn btn-outline-primary">Create</a>
+                <a asp-controller="Charts" asp-action="Create" class="btn btn-outline-primary">Create</a>
             </div>
         </div>
     </div>
@@ -26,7 +26,7 @@
             <div class="card-body text-center">
                 <h5 class="card-title text-success">My Charts</h5>
                 <p class="card-text">View your saved charts and observations.</p>
-                <a href="#" class="btn btn-outline-success">View Charts</a>
+                <a asp-controller="Charts" asp-action="Index" class="btn btn-outline-success">View Charts</a>
             </div>
         </div>
     </div>

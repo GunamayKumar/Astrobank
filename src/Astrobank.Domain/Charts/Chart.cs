@@ -10,10 +10,10 @@ namespace Astrobank.Domain.Charts;
 public class Chart : BaseEntity, ISoftDelete {
     public int ChartID { get; init; }
     public int UserID { get; init; }
-    public int ChartTypeID { get; init; }
-    public int ChartPermissionID { get; init; }
-    public int CountryID { get; init; }
-    public int? HelpCategoryID { get; init; }
+    public int ChartTypeID { get; set; }
+    public int ChartPermissionID { get; set; }
+    public int CountryID { get; set; }
+    public int? HelpCategoryID { get; set; }
 
     public required string Name { get; set; }
     public string? Alias { get; set; }

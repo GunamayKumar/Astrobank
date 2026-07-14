@@ -1,3 +1,4 @@
+using Astrobank.Application.Common.Models;
 using Astrobank.Application.Charts.Queries.ListCharts;
 using Astrobank.Domain.Charts;
 namespace Astrobank.Application.Interfaces.Repositories;

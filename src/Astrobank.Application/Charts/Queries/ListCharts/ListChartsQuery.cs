@@ -1,3 +1,4 @@
+using Astrobank.Application.Common.Models;
 using Astrobank.Application.Charts.DTOs;
 using Astrobank.Application.Common.CQRS;
 using Astrobank.Application.Interfaces.Repositories;
@@ -19,12 +20,6 @@ public class ListChartsQuery {
     public int PageSize { get; set; } = 10;
     public string SortColumn { get; set; } = "CreatedOn";
     public bool SortDescending { get; set; } = true;
-}
-public class PaginatedList<T> {
-    public List<T> Items { get; set; } = new();
-    public int TotalCount { get; set; }
-    public int PageNumber { get; set; }
-    public int PageSize { get; set; }
 }
 public class ListChartsQueryHandler : IQueryHandler<ListChartsQuery, PaginatedList<ChartDto>> {
     private readonly IChartRepository _repository;

@@ -1,3 +1,4 @@
+using Astrobank.Application.Common.Models;
 using Astrobank.Application.Common.CQRS;
 using Astrobank.Application.MasterData.Countries.DTOs;
 using Astrobank.Application.Interfaces.Repositories;
@@ -15,12 +16,6 @@ public class ListCountriesQuery {
     public bool SortDescending { get; set; } = false;
 }
 
-public class PaginatedList<T> {
-    public List<T> Items { get; set; } = new();
-    public int TotalCount { get; set; }
-    public int PageNumber { get; set; }
-    public int PageSize { get; set; }
-}
 
 public class ListCountriesQueryHandler : IQueryHandler<ListCountriesQuery, PaginatedList<CountryDto>> {
     private readonly ICountryRepository _repository;

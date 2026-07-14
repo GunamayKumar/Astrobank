@@ -1,6 +1,6 @@
+using Astrobank.Application.Common.Models;
 using Astrobank.Application.Common.CQRS;
 using Astrobank.Application.MasterData.ChartTypes.DTOs;
-using Astrobank.Application.MasterData.Countries.Queries.ListCountries;
 using Astrobank.Application.Interfaces.Repositories;
 using Astrobank.Domain.MasterData;
 using AutoMapper;

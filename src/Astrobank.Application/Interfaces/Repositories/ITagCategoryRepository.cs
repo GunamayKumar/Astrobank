@@ -1,4 +1,4 @@
-using Astrobank.Application.MasterData.Countries.Queries.ListCountries;
+using Astrobank.Application.Common.Models;
 using Astrobank.Application.MasterData.TagCategorys.Queries.ListTagCategorys;
 using Astrobank.Domain.MasterData;
 namespace Astrobank.Application.Interfaces.Repositories;

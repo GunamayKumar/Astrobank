@@ -1,3 +1,4 @@
+using Astrobank.Application.Common.Models;
 using Astrobank.Application.Charts.Commands.CreateChart;
 using Astrobank.Application.Charts.Commands.UpdateChart;
 using Astrobank.Application.Charts.DTOs;

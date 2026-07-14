@@ -1,3 +1,4 @@
+using Astrobank.Application.Common.Models;
 using Astrobank.Application.MasterData.Countries.Queries.ListCountries;
 using Astrobank.Domain.Users;
 namespace Astrobank.Application.Interfaces.Repositories;
